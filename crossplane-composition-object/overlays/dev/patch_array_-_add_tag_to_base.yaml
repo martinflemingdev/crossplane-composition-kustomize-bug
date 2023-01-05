@@ -1,0 +1,12 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: example
+spec:
+  resources:
+  - name: cloudsqlinstance
+    base:
+      spec:
+        forProvider:
+          tags:
+            kustomize: patching 'resources' array item replaces entire item

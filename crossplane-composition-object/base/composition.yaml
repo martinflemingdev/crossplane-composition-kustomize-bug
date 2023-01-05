@@ -1,0 +1,52 @@
+# Example from https://docs.crossplane.io/v1.8/reference/composition/
+---
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: example
+  labels:
+    crossplane.io/xrd: xpostgresqlinstances.database.example.or
+    provider: gcp
+spec:
+  compositeTypeRef:
+    apiVersion: database.example.org/v1alpha1
+    kind: XPostgreSQLInstance
+  writeConnectionSecretsToNamespace: crossplane-system
+  resources:
+  - name: cloudsqlinstance
+    base:
+      apiVersion: database.gcp.crossplane.io/v1beta1
+      kind: CloudSQLInstance
+      spec:
+        forProvider:
+          databaseVersion: POSTGRES_12
+          region: us-central1
+          settings:
+            dataDiskType: PD_SSD
+            ipConfiguration:
+              ipv4Enabled: true
+              authorizedNetworks:
+                - value: "0.0.0.0/0"
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.size
+      toFieldPath: spec.forProvider.settings.tier
+      transforms:
+      - type: map
+        map:
+          medium: db-custom-1-3840
+      policy:
+        fromFieldPath: Required
+        mergeOptions:
+          appendSlice: true
+          keepMapValues: true
+    connectionDetails:
+    - name: hostname
+      fromConnectionSecretKey: hostname
+    readinessChecks:
+    - type: None
+  patchSets:
+  - name: metadata
+    patches:
+    - type: FromCompositeFieldPat
+      fromFieldPath: metadata.labels[some-important-label]

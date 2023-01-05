@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  template:
+    spec:      
+      containers:
+      - name: nginx
+        env:
+        - name: Kustomize
+          value: patching 'containers' array appends as expected
