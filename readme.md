@@ -56,7 +56,12 @@ The map patch in `crossplane-composition-object/overlays/map` works as expected.
 ```bash
 kubectl kustomize overlays/map
 ```
-The k8s deployment object array and map patches both work as expected and are included as working example references.
+
+## For Reference
+
+The k8s deployment object array and map patches both work as expected and are included as working example references. 
+
+Specifically, the array patch appends the field it is patching to the array item, instead of replacing the array item like in the crossplane composition example above.
 ```bash
 cd ..
 cd k8s-deployment-object
