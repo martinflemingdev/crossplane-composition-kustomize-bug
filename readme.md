@@ -51,7 +51,7 @@ spec:
   writeConnectionSecretsToNamespace: crossplane-system
 ```
 
-The map patch in `overlays/map` works as expected for crossplane-composition-object.
+The map patch in `crossplane-composition-object/overlays/map` works as expected.
 
 ```bash
 kubectl kustomize overlays/map
