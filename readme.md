@@ -8,7 +8,7 @@ It appears the Composition CRD does not define correct merge keys for all array/
 
 There is a simple `base` and `overlay` directory structure with `dev` and `prod` overlays for both Crossplane's Composition object and K8s's Deployment object.
 
-The `overlays/dev` folders attempt to patch an array item and the `overelays/prod` folders attempt to patch a map. 
+The `overlays/dev` folders attempt to patch an array item and the `overlays/prod` folders attempt to patch a map. 
 
 
 ## To Reproduce Bug
@@ -51,7 +51,7 @@ spec:
   writeConnectionSecretsToNamespace: crossplane-system
 ```
 
-The map patch in `overelays/prod` works as expected for crossplane-composition-object.
+The map patch in `overlays/prod` works as expected for crossplane-composition-object.
 
 ```bash
 kubectl kustomize overlays/prod
