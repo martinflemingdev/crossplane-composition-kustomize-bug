@@ -6,12 +6,12 @@ It appears the Composition CRD does not define correct merge keys for all array/
 
 ## Repo Structure
 
-There is a simple `base` and `overlay` directory structure with `array` and `map` overlays for both Crossplane's Composition object and K8s's Deployment object.
+There is a simple `base` and `overlays` directory structure with `array` and `map` overlays for both Crossplane's Composition object and K8s's Deployment object.
 
 The `overlays/array` folders attempt to patch an array item and the `overlays/map` folders attempt to patch a map. 
 
 
-## To Remapuce Bug
+## To Reproduce Bug
 
 Clone this repo and cd into crossplane-composition-object directory and run kustomize command.
 ```bash
@@ -41,7 +41,7 @@ spec:
     - fromFieldPath: metadata.labels[some-important-label]
       type: FromCompositeFieldPat
   resources:
-  - name: cloudsqlinstance      # array item being patched
+  - name: cloudsqlinstance # <------------------- array item being patched
     base:
       spec:
         forProvider:
