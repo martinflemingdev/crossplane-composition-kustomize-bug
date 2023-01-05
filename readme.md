@@ -19,7 +19,7 @@ git clone <link>
 cd crossplane-composition-object
 kubectl kustomize overlays/dev
 ```
-Instead of appending the tag to the `resources` array item at `base.spec.forProvider.tags.kustomize`, the entire `resources` array item is replaced by the patch. All other fields are brought in from `base/composition.yaml` as expected.
+Instead of appending the tag to the `resources` array item at `base.spec.forProvider.tags.kustomize`, the entire `resources` array item is replaced by the patch. All other fields are brought in from `crossplane-composition-object/base/composition.yaml` as expected.
 
 ```yaml
 # result of 'kubectl kustomize overlays/dev'
