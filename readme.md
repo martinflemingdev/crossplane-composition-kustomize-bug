@@ -6,7 +6,7 @@ It appears the Composition CRD does not define correct merge keys for all array/
 
 ## Repo Structure
 
-There is a simple `base` and `overlays` directory structure with `array` and `map` overlays for both Crossplane's Composition object and K8s's Deployment object.
+The crossplane and k8s directories have a simple kustomize `base` and `overlays` directory structure. Each overlays directory has an `array` and `map` directory
 
 The `overlays/array` folders attempt to patch an array item and the `overlays/map` folders attempt to patch a map. 
 
