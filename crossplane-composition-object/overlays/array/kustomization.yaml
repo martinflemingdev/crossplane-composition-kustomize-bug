@@ -2,5 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
 - ../../base
-patches:
+patchesStrategicMerge:
 - patch_array_-_add_tag_to_base.yaml
