@@ -8,7 +8,7 @@ It appears the Composition CRD does not define correct merge keys for all array/
 
 The crossplane and k8s directories have a simple kustomize `base` and `overlays` directory structure. Each overlays directory has an `array` and `map` directory
 
-The `overlays/array` folders attempt to patch an array item and the `overlays/map` folders attempt to patch a map. 
+The `overlays/array` directories attempt to patch an array item and the `overlays/map` directories attempt to patch a map. 
 
 
 ## To Reproduce Bug
